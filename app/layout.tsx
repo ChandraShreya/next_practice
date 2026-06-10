@@ -1,6 +1,14 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+// import ParentData from "./context/parentData/page";
+import Navigation from "@/components/navigation/navigation";
+import Parent from "./contexttt/parent/page";
+import { Provider } from "react-redux";
+import { store } from "@/redux/store/store";
+import Providers from "@/redux/store/provider";
+import ParentData from "./contextToggle/parentData/page";
+import QueryProvider from "@/provider/tanstack-query-provider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,7 +35,21 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        {/* <h1>hello layout</h1> */}
+        {/* <Navigation/> */}
+        {/* <ParentData>{children}</ParentData> */}
+        {/* <Parent>{children}</Parent> */}
+        {/* <Providers>{children}</Providers> */}
+        <ParentData>
+          <QueryProvider>
+            
+            {children}
+
+          </QueryProvider>
+          
+          </ParentData>
+
+        
       </body>
     </html>
   );
